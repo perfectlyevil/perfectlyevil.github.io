@@ -2,22 +2,16 @@
 layout: default
 ---
 
-<h2>{{ page.title }}</h2>
+{{ content }}
+{% assign contentwonl = content | strip_newlines %} {% unless contentwonl == ""  %} <br /> {% endunless %} <!-- add line break if there is any content -->
 
-  {% include page-intro.html %}
-
-  {{ content }}
-
-  <section>
-
-    <h3>Recent posts from the blog</h3>
-
-    <ul>
-      {% for post in site.posts limit:3 %}
-        <li>
-          <a href="{{ post.url }}">{{ post.title }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-
-  </section>
+{%- if site.posts.size > 0 -%}
+  <ul>
+    {%- for post in site.posts -%}
+    <li>
+      {%- assign date_format = "%Y-%m-%d" -%}
+      [ {{ post.date | date: date_format }} ] <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+    </li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}
