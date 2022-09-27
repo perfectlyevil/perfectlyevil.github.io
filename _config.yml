@@ -88,10 +88,10 @@ exclude:
   - vendor/ruby/
 remote_theme: b2a3e8/jekyll-theme-console
 header_pages:
-  - index.md
-  - peter.md
-  - about.md
-  - contact.md
+  - pages/index.md
+  - pages/peter.md
+  - pages/about.md
+  - pages/contact.md
 style: dark # dark (default), light or hacker
 listen_for_clients_preferred_style: true # false (default) or true
 
